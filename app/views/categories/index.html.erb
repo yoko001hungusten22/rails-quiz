@@ -1,0 +1,20 @@
+<div class= "all_question_card">
+    <% @studies.each do |study| %>
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+          <div class="panel-body">
+              <div class= "category_list_card">
+                   <p><%=study.category.category_name%></p>
+              </div>
+              <h4><%=study.question%></h4>
+              <div class="buttoms">
+                  <a href="/studies/<%=study.id%>" data-method="delete"> <span class="glyphicon glyphicon-trash"></span></a>
+                  <a href="/studies/<%=study.id%>/edit"> <span class="glyphicon glyphicon-edit"></span></a></div>
+              </div>
+          <div class="panel-body">
+           <h4><%=study.answer%></h4>
+          </div>
+        </div>
+    </div>
+    <% end %>
+</div>

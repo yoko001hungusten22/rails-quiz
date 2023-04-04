@@ -1,0 +1,16 @@
+<h3><%=@category.category_name%>の問題一覧</h3>
+
+<%@studies.each do |study| %>
+    <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <%=study.question%>
+          </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <%=study.answer%>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+<% end %>

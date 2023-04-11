@@ -46,6 +46,8 @@ gem 'bootstrap', "~> 5.0.0-beta3"
 
 gem 'jquery-rails'
 
+gem 'carrierwave'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -66,6 +68,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do

@@ -48,6 +48,12 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 
+gem 'devise'
+
+gem "turbo-rails"
+
+gem "stimulus-rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

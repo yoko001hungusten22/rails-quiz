@@ -1,4 +1,9 @@
 <title>QuizApp</title>
+
+<% if user_signed_in? %>
+  <%= link_to "サインアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% end %>
+
 <div class= "question_card">
   <div class="panel panel-default">
     <div class="panel-body">

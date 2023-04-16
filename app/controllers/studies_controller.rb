@@ -9,11 +9,13 @@ class StudiesController < ApplicationController
   end
 
   def create
-      Study.create(question:params["studies"]["question"],
-      answer:params["studies"]["answer"],
-      category_id:params["studies"]["category_id"])
+    @study = Study.new(study_params)
+    if @study.save
+      flash[:success] = "クイズを作成しました！"
       redirect_to "/"
-    
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -37,5 +39,11 @@ class StudiesController < ApplicationController
 
   def show
      @study = Study.find(params["id"])
+  end
+  
+  private
+  
+  def study_params
+    params.require(:studies).permit(:question, :answer, :category_id, :img)
   end
 end

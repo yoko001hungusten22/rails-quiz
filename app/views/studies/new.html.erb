@@ -1,16 +1,20 @@
-<%=form_tag("/create") do %>
+<%=form_tag("/create", multipart: true) do %>
   <div class="form-group">
-        <%=label_tag "form-question", "Question"%>
-        <%=text_field :studies, :question, id:"form-question",class:"form-control",placeholder: "question"%>
-      </div>
-      <div class="form-group">
-        <%=label_tag "form-answer", "Answer"%>
-        <%=text_field :studies, :answer, id:"form-answer",class:"form-control",placeholder: "answer"%>
-      </div>
-       <div class="form-group">
-        <%=label_tag "form-category", "Category"%>
-        <%=select_tag 'studies[category_id]', options_from_collection_for_select(@categories, :id, :category_name) ,class:"form-control",id:"form-category"%>
-       </div>
-        <%=submit_tag "Create",class:"btn btn-warning" %>
-<% end %>
+    <%=label_tag "form-question", "Question"%>
+    <%=text_field :studies, :question, id:"form-question",class:"form-control",placeholder: "question"%>
+    <%= label_tag "img", "Image" %><br>
+    <%= file_field :studies, :img %>
   </div>
+  
+  <div class="form-group">
+    <%=label_tag "form-answer", "Answer"%>
+    <%=text_field :studies, :answer, id:"form-answer",class:"form-control",placeholder: "answer"%>
+  </div>
+  
+  <div class="form-group">
+    <%=label_tag "form-category", "Category"%>
+    <%=select_tag 'studies[category_id]', options_from_collection_for_select(@categories, :id, :category_name) ,class:"form-control",id:"form-category"%>
+  </div>
+  
+  <%=submit_tag "Create",class:"btn btn-warning" %>
+<% end %>

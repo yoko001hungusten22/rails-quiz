@@ -2,7 +2,12 @@
 <div class= "question_card">
     <div class="panel panel-default">
       <div class="panel-body">
-     <h3><%=@study.answer%></h3> 
+        <h3><%=@study.answer%></h3>
+           <% if @study.img? %>
+             <p>
+              <%= image_tag @study.img_url(:thumb) %>
+             </p>
+           <% end %>
       </div>
     </div>
 </div>

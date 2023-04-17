@@ -3,6 +3,7 @@ class StudiesController < ApplicationController
       @studies = Study.all
       @random = @studies.sample
       @display = @random
+      @categories = Category.all
   end
 
   def new

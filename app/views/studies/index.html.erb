@@ -1,12 +1,12 @@
-<title>QuizApp</title>
-<div class= "question_card">
-  <div class="panel panel-default">
-    <div class="panel-body">
-     <h3><%=@random.question%></h3>
+<% if user_signed_in? %>
+  <div class= "question_card">
+    <div class="panel panel-default">
+      <div class="panel-body">
+       <h3><%=@random.question%></h3>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="answer_button">
-  <%= link_to "答えを見る", "/studies/#{@random.id}/show", class: "btn btn-info" %>
-</div>
+  <div class="answer_button">
+    <%= link_to "答えを見る", "/studies/#{@random.id}/show", class: "btn btn-info" %>
+  </div>
+<% end %>

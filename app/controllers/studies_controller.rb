@@ -1,4 +1,7 @@
 class StudiesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :get_category, only: [:index, :new, :show]
+  
   def index
       @studies = Study.all
       @random = @studies.sample
@@ -39,6 +42,10 @@ class StudiesController < ApplicationController
 
   def show
      @study = Study.find(params["id"])
+  end
+  
+  def get_category
+      @categories = Category.all
   end
   
   private

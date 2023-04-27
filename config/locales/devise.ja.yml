@@ -1,0 +1,35 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "アカウントが認証されました。"
+      send_instructions: "アカウントの認証手順をメールで送信しました。確認してください。"
+      send_paranoid_instructions: "もしアカウントが登録されている場合、認証手順をメールで送信しました。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      unauthenticated: "ログインしてください。"
+      unconfirmed: "アカウントが認証されていません。"
+      locked: "アカウントがロックされています。"
+      invalid: "メールアドレスまたはパスワードが間違っています。"
+      invalid_token: "リクエストの有効期限が切れています。"
+      timeout: "セッションがタイムアウトしました。"
+      inactive: "アカウントがアクティブではありません。"
+      not_found_in_database: "メールアドレスまたはパスワードが間違っています。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+    passwords:
+      send_instructions: "パスワード再設定手順をメールで送信しました。確認してください。"
+      send_paranoid_instructions: "もしアカウントが登録されている場合、パスワード再設定手順をメールで送信しました。"
+      updated: "パスワードが更新されました。"
+      updated_not_active: "パスワードが更新されました。"
+      send_new_password: "新しいパスワードをメールで送信しました。"
+    registrations:
+      signed_up: "アカウントが登録されました。"
+      signed_up_but_inactive: "アカウントが登録されました。"
+      signed_up_but_locked: "アカウントがロックされました。"
+      updated: "アカウント情報が更新されました。"
+      destroyed: "アカウントが削除されました。"
+    unlocks:
+      send_instructions: "アカウントのロック解除手順をメールで送信しました。確認してください。"
+      send_paranoid_instructions: "もしアカウントが登録されている場合、ロック解除手順をメールで送信しました。"
+      unlocked: "アカウントがロック解除されました。"

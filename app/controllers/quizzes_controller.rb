@@ -11,7 +11,6 @@ class QuizzesController < ApplicationController
   def create
       Study.create(question:params["studies"]["question"],answer:params["studies"]["answer"],category_id:params["studies"]["category_id"])
       redirect_to "/"
-    
   end
 
   def edit

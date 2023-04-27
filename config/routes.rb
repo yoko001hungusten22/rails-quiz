@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "/studies/:id/show", to:"studies#show"
     get "/all", to:"categories#index"
     get "/categories/:id", to: "categories#show"
+    
     devise_for :users, controllers: {
       registrations: "users/registrations",
       sessions: "users/sessions",

@@ -1,17 +1,12 @@
-<title>QuizApp</title>
-
 <% if user_signed_in? %>
-  <%= link_to "サインアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
-<% end %>
-
-<div class= "question_card">
-  <div class="panel panel-default">
-    <div class="panel-body">
-     <h3><%=@random.question%></h3>
+  <div class= "question_card">
+    <div class="panel panel-default">
+      <div class="panel-body">
+       <h3><%=@random.question%></h3>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="answer_button">
-  <%= link_to "答えを見る", "/studies/#{@random.id}/show", class: "btn btn-info" %>
-</div>
+  <div class="answer_button">
+    <%= link_to "答えを見る", "/studies/#{@random.id}/show", class: "btn btn-info" %>
+  </div>
+<% end %>

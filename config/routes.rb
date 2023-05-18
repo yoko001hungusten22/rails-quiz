@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
     root to:"studies#index"
+    
+    devise_for :users, controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+      passwords: "users/passwords",
+      confirmations: "users/confirmations"
+    }
+    
     get "/new", to:"studies#new"
     post "/create", to:"studies#create"
     delete "/studies/:id", to:"studies#destroy"
@@ -8,11 +16,5 @@ Rails.application.routes.draw do
     get "/studies/:id/show", to:"studies#show"
     get "/all", to:"categories#index"
     get "/categories/:id", to: "categories#show"
-    
-    devise_for :users, controllers: {
-      registrations: "users/registrations",
-      sessions: "users/sessions",
-      passwords: "users/passwords",
-      confirmations: "users/confirmations"
-    }
+    get '/users/:id', to: 'users#show', as: 'user'
 end

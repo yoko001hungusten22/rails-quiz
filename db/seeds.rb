@@ -20,3 +20,15 @@ Category.find_or_create_by(category_name:"恋愛")
 Category.find_or_create_by(category_name:"その他")
 
 Study.find_or_create_by(question: "地球の色は？",answer: "青色",category_id: Category.first.id)
+
+User.create!(
+  email: "test1@example.com",
+  password: "password",
+  name: "Test User 1",
+)
+
+User.create!(
+  email: "test2@example.com",
+  password: "password",
+  name: "Test User 2",
+)

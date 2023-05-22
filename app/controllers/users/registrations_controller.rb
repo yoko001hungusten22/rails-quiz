@@ -31,6 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, status: :see_other # 登録失敗時のrespond_withにerror出したいので、ここで303 statusを追加
     end
   end
+  
+  def edit
+    @categories = Category.all
+  end
 
   # GET /resource/edit
   # def edit
@@ -77,4 +81,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  protected
+  
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+  
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 end

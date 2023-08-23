@@ -52,10 +52,6 @@
       </div>
     </nav>
     
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-    
     <% if flash[:notice] %>
       <div class="alert alert-info">
         <%= flash[:notice] %>

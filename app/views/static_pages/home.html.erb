@@ -1,0 +1,36 @@
+<main>
+  <h1 class="mt-5 text-center">Study Mate</h1>
+    <% if user_signed_in? %>
+      <div class="text-center mt-4">
+        <p>ご利用いただき、ありがとうございます<br>
+          このアプリでは自分や他人が作成した問題を解いたり、他人と共有することで効率的な学習を促進します。</p>
+        <div class="mt-3 mr-3 text-center col-sm-3">
+           <%= link_to '問題を解く', index_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="mt-3 mr-3 text-center col-sm-3">
+          <p>
+            まだアカウントを<br>
+            お持ちでない方はこちら
+          </p>
+           <%= link_to '新規登録', new_user_registration_path, class: "btn btn-primary" %>
+        </div>
+        <div class="mt-3 ml-3 text-center col-sm-3">
+          <p>
+            すでにアカウントを<br>
+            お持ちの方はこちら
+          </p>
+           <%= link_to 'ログイン', user_session_path, class: "btn btn-primary" %>
+        </div>
+        <div class="mt-3 ml-3 text-center col-sm-3">
+          <p>
+            ゲストとしてログイン<br>
+            する方はこちら
+          </p>
+          <a class="btn btn-primary" href="#" role="button">ゲストログイン</a>
+        </div>
+      </div>
+    <% end %>
+</main>

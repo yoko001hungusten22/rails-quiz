@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-    root to:"studies#index"
+    root to:"static_pages#home"
+    get "/index", to:"studies#index"
     get "/new", to:"studies#new"
     post "/create", to:"studies#create"
     delete "/studies/:id", to:"studies#destroy"

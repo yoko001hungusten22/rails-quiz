@@ -4,8 +4,8 @@
       <div class="text-center mt-4">
         <p>ご利用いただき、ありがとうございます<br>
           このアプリでは自分や他人が作成した問題を解いたり、他人と共有することで効率的な学習を促進します。</p>
-        <div class="mt-3 mr-3 text-center col-sm-3">
-           <%= link_to '問題を解く', index_path, class: "btn btn-primary" %>
+        <div class="start_button">
+           <%= link_to '問題を解く', studies_path, data: { turbo: false }, class: "btn btn-primary" %>
         </div>
       </div>
     <% else %>

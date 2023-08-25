@@ -1,11 +1,10 @@
 class StudiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_category, only: [:index, :new, :show]
+  before_action :get_category, only: [:index, :new, :show, :edit]
   
   def index
       @studies = Study.all
       @random = @studies.sample
-      @display = @random
   end
 
   def new
@@ -15,7 +14,7 @@ class StudiesController < ApplicationController
     @study = Study.new(study_params)
     if @study.save
       flash[:success] = "クイズを作成しました！"
-      redirect_to "/"
+      redirect_to studies_path
     else
       render 'new'
     end
@@ -26,18 +25,19 @@ class StudiesController < ApplicationController
   end
 
   def update
-      study = Study.find(params["id"])
-      study.title = params["studies"]["question"]
-      study.body = params["studies"]["answer"]
-      study.category_id = params["studies"]["category_id"]
-      study.save
-      redirect_to "/"
+    @study = Study.find(params[:id])
+    if @study.update(study_params)
+      flash[:success] = "クイズを更新しました！"
+      redirect_to studies_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
      study = Study.find(params["id"])
      study.destroy
-     redirect_to "/"
+     redirect_to studies_path
   end
 
   def show

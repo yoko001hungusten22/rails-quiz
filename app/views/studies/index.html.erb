@@ -7,6 +7,6 @@
     </div>
   </div>
   <div class="answer_button">
-    <%= link_to "答えを見る", "/studies/#{@random.id}/show", class: "btn btn-info" %>
+    <%= link_to "答えを見る", "/studies/#{@random.id}",data: { turbo: false }, class: "btn btn-info" %>
   </div>
 <% end %>

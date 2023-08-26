@@ -2,11 +2,36 @@
   <div class= "question_card">
     <div class="panel panel-default">
       <div class="panel-body">
-       <h3><%=@random.question%></h3>
+        <h3><%=@random.question%></h3>
       </div>
     </div>
   </div>
   <div class="answer_button">
-    <%= link_to "答えを見る", "/studies/#{@random.id}",data: { turbo: false }, class: "btn btn-info" %>
+    <!-- data-bs-toggleとdata-bs-targetを使用してモーダルをトリガー -->
+    <a href="#" data-bs-toggle="modal" data-bs-target="#answerModal" class="btn btn-info">答えを見る</a>
   </div>
+  
+
+  <div class="modal fade" id="answerModal" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="answerModalLabel">答え</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3><%= @random.answer %></h3>
+        <% if @random.img? %>
+          <p>
+            <%= image_tag @random.img_url(:thumb) %>
+          </p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+        <%= link_to "編集", edit_study_path(@random), class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>

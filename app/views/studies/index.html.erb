@@ -1,37 +1,45 @@
 <% if user_signed_in? %>
-  <div class= "question_card">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3><%=@random.question%></h3>
+  <div class="text-center mt-4">
+    <h1 class="mt-5 text-center">問題</h1>
+    <div class= "question_card">
+        <div class="panel panel-default">
+          <div class="panel-body question_display">
+            <h3><%=@random_studies.question%></h3>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="answer_button">
+        <%= link_to '答えを見る', '#', data: { bs_toggle: "modal", bs_target: "#answerModal" }, class: "btn btn-info" %>
+      </div>
+      <div class= "next_button">
+        <%= link_to '次の問題→', studies_path, data: { turbo: false }, class: "btn btn-info" %>
+      </div>
   </div>
-  <div class="answer_button">
-    <!-- data-bs-toggleとdata-bs-targetを使用してモーダルをトリガー -->
-    <a href="#" data-bs-toggle="modal" data-bs-target="#answerModal" class="btn btn-info">答えを見る</a>
-  </div>
-  
 
   <div class="modal fade" id="answerModal" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="answerModalLabel">答え</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3><%= @random.answer %></h3>
-        <% if @random.img? %>
-          <p>
-            <%= image_tag @random.img_url(:thumb) %>
-          </p>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-        <%= link_to "編集", edit_study_path(@random), class: "btn btn-warning" %>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="answerModalLabel">答え</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3><%= @random_studies.answer %></h3>
+          <% if @random_studies.img? %>
+            <p>
+              <%= image_tag @random_studies.img_url(:thumb) %>
+            </p>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "編集", edit_study_path(@random_studies), class: "btn btn-warning" %>
+          <%= link_to '削除', @random_studies, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+          <div class= "next_button_modal">
+           <%= link_to '次の問題', studies_path, data: { turbo: false }, class: "btn btn-info" %>
+          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>

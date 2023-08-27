@@ -4,7 +4,7 @@ class StudiesController < ApplicationController
   
   def index
       @studies = Study.all
-      @random = @studies.sample
+      @random_studies = @studies.sample
   end
 
   def new

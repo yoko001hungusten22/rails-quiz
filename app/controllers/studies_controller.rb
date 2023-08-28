@@ -4,7 +4,7 @@ class StudiesController < ApplicationController
   
   def index
       @studies = Study.all
-      @random_studies = @studies.sample
+     @random_studies = @studies.shuffle
   end
 
   def new
@@ -21,7 +21,7 @@ class StudiesController < ApplicationController
   end
 
   def edit
-      @study = Study.find(params["id"])
+      @study = Study.find(params[:id])
   end
 
   def update
@@ -35,13 +35,13 @@ class StudiesController < ApplicationController
   end
 
   def destroy
-     study = Study.find(params["id"])
+     study = Study.find(params[:id])
      study.destroy
      redirect_to studies_path
   end
 
   def show
-     @study = Study.find(params["id"])
+     @study = Study.find(params[:id])
   end
   
   def get_category

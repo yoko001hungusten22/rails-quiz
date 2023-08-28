@@ -1,16 +1,26 @@
-<h3>Answer</h3>
-<div class= "question_card">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3><%=@study.answer%></h3>
-           <% if @study.img? %>
-             <p>
-              <%= image_tag @study.img_url(:thumb) %>
-             </p>
-           <% end %>
-      </div>
-    </div>
-</div>
-<div class= "answer_button">
-    <%= link_to 'NEXT QUESTION', studies_path, data: { turbo: false }, class: "btn btn-info" %>
-</div>
+<div class="text-center mt-4">
+  <div class="container">
+    <h2>問題の詳細</h2>
+  
+    <dl>
+      <dt>質問:</dt>
+      <dd><%= @study.question %></dd>
+    
+      <dt>回答:</dt>
+      <dd><%= @study.answer %></dd>
+    
+      <dt>作成日時:</dt>
+      <dd><%= @study.created_at.to_formatted_s(:long) %></dd>
+    
+      <dt>更新日時:</dt>
+      <dd><%= @study.updated_at.to_formatted_s(:long) %></dd>
+    
+      <dt>カテゴリー名:</dt>
+      <dd><%= @study.category.category_name %></dd>
+    </dl>
+  
+    <%= link_to '編集', edit_study_path(@study), class: 'btn btn-warning' %>
+    <%= link_to '削除', @study, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: 'btn btn-danger' %>
+    <%= link_to '戻る', studies_path, class: 'btn btn-primary' %>
+  </div>
+ </div>

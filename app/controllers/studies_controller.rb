@@ -3,7 +3,7 @@ class StudiesController < ApplicationController
   before_action :get_category, only: [:index, :new, :show, :edit]
   
   def index
-      @studies = Study.all
+      @studies = Study.all.page(params[:page]).per(5)
      @random_studies = @studies.shuffle
   end
 

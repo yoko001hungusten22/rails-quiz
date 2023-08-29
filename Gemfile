@@ -52,6 +52,10 @@ gem 'devise'
 
 gem 'rails-i18n'
 
+gem 'kaminari'
+
+gem 'bootstrap5-kaminari-views'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

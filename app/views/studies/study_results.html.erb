@@ -1,0 +1,8 @@
+<h1>採点結果</h1>
+<p>わかった数: <%= @understood_results.count %></p>
+<p>わかった質問一覧:</p>
+<ul>
+  <% @understood_results.each do |result| %>
+    <li><%= result.study.question %></li>
+  <% end %>
+</ul>

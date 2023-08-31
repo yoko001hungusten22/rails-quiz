@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_162340) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_071304) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.datetime "created_at", null: false
@@ -28,6 +28,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_162340) do
     t.index ["user_id"], name: "index_studies_on_user_id"
   end
 
+  create_table "study_results", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "study_id", null: false
+    t.boolean "understood"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["study_id"], name: "index_study_results_on_study_id"
+    t.index ["user_id"], name: "index_study_results_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -42,4 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_162340) do
   end
 
   add_foreign_key "studies", "users"
+  add_foreign_key "study_results", "studies"
+  add_foreign_key "study_results", "users"
 end

@@ -11,6 +11,12 @@
         <div class="answer_button">
           <%= link_to '答えを見る', '#', data: { bs_toggle: "modal", bs_target: "#answerModal-#{study.id}" }, class: "btn btn-info" %>
         </div>
+        <% study_result = study.study_results.find_or_initialize_by(user_id: current_user.id) %>
+        <% if study_result.new_record? || !study_result.understood %>
+          <%= link_to 'わかった', toggle_understood_study_path(study), data: { "turbo-method": :post }, class: 'btn btn-success' %>
+        <% else %>
+          <%= link_to 'わかったを取り消す', toggle_understood_study_path(study), data: { "turbo-method": :post }, class: 'btn btn-danger' %>
+        <% end %>
       </div>
 
       <div class="modal fade" id="answerModal-<%= study.id %>" tabindex="-1" aria-labelledby="answerModalLabel" aria-hidden="true">
@@ -42,6 +48,7 @@
     <% end %>
     <div class= "next_button">
       <%= link_to '問題をシャッフルする', studies_path, data: { turbo: false }, class: "btn btn-info" %>
+      <%= link_to '採点する', study_results_study_path(@studies), data: { "turbo-method": :post }, class: 'btn btn-info' %>
     </div>
   </div>
 <% end %>

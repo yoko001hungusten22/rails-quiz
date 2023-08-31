@@ -48,6 +48,19 @@ class StudiesController < ApplicationController
       @categories = Category.all
   end
   
+  def study_results
+    @study = Study.find(params[:id])
+    @understood_results = @study.study_results.where(understood: true)
+  end
+  
+  def toggle_understood
+    @study = Study.find(params[:id])
+    study_result = @study.study_results.find_or_initialize_by(user_id: current_user.id)
+    study_result.understood = !study_result.understood
+    study_result.save
+    redirect_to study_path(@study)
+  end
+  
   private
   
   def study_params

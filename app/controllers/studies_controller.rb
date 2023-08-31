@@ -3,7 +3,7 @@ class StudiesController < ApplicationController
   before_action :get_category, only: [:index, :new, :show, :edit]
   
   def index
-      @studies = Study.all
+     @studies = current_user.studies.all
      @random_studies = @studies.shuffle
   end
 
@@ -11,7 +11,7 @@ class StudiesController < ApplicationController
   end
 
   def create
-    @study = Study.new(study_params)
+    @study = current_user.studies.new(study_params)
     if @study.save
       flash[:success] = "クイズを作成しました！"
       redirect_to studies_path

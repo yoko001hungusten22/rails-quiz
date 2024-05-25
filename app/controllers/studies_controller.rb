@@ -49,15 +49,17 @@ class StudiesController < ApplicationController
   end
 
   def score
+    total_count = Study.count
     correct_study_ids = params[:study_ids] || []
     correct_count = correct_study_ids.count
 
     respond_to do |format|
-      format.html { redirect_to result_studies_path(correct_count: correct_count) }
+      format.html { redirect_to result_studies_path(total_count: total_count, correct_count: correct_count) }
     end
   end
 
   def result
+    @total_count = params[:total_count].to_i
     @correct_count = params[:correct_count].to_i
   end
   

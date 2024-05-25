@@ -1,6 +1,6 @@
 <div class="text-center mt-4">
   <h1 class="mt-5 text-center">採点結果</h1>
-  <p>正答数は <%= @correct_count %> 問です。</p>
+  <p>正答数は<%= @total_count %>問中<%= @correct_count %>問です。</p>
   <div class="mt-4">
     <%= link_to 'トップに戻る', root_path, class: "btn btn-primary" %>
   </div>

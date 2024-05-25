@@ -1,6 +1,6 @@
 class StudiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_category, only: [:index, :new, :show, :edit]
+  before_action :get_category, only: [:index, :new, :show, :edit, :result]
   
   def index
      @studies = current_user.studies.all
@@ -46,6 +46,19 @@ class StudiesController < ApplicationController
   
   def get_category
       @categories = Category.all
+  end
+
+  def score
+    correct_study_ids = params[:study_ids] || []
+    correct_count = correct_study_ids.count
+
+    respond_to do |format|
+      format.html { redirect_to result_studies_path(correct_count: correct_count) }
+    end
+  end
+
+  def result
+    @correct_count = params[:correct_count].to_i
   end
   
   private
